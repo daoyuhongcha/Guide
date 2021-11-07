@@ -1,0 +1,9 @@
+@ echo off
+%1 %2
+ver|find "5.">nul&&goto :Admin
+mshta vbscript:createobject("shell.application").shellexecute("%~s0","goto :Admin","","runas",1)(window.close)&goto :eof
+:Admin
+//上面这段代码之后执行的所有东西都是管理员权限方式
+@echo off
+taskkill /f /im TPHelper.exe
+taskkill /f /im wegame.exe
